@@ -10,6 +10,16 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  */
+
+
+// Graphical variables
+@import "config/fonts";
+@import "config/colors";
+
+// Your CSS partials
+@import "components/index";
+
+// Other config
+@import "config/global";
