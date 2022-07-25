@@ -33,8 +33,11 @@ header {
   }
 }
 
-main.form {
+main {
   min-height: calc(100vh - 150px);
+}
+
+div.form {
   text-align: center;
 }
 

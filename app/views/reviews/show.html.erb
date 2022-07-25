@@ -1,18 +1,14 @@
-<main>
+<h1><%= @review.title %></h1>
 
-  <h1><%= @review.title %></h1>
+<div class="score">
+  <%= @review.score %>
+</div>
 
-  <div class="score">
-    <%= @review.score %>
-  </div>
+<div class="body">
+  <%= simple_format @review.body %>
+</div>
 
-  <div class="body">
-    <%= simple_format @review.body %>
-  </div>
-
-  <div class="actions">
-    <%= link_to "Delete", review_path(@review), method: :delete, data: {confirm: "Are you sure?"} %>
-    <%= link_to "Edit", edit_review_path(@review) %>
-  </div>
-
-</main>
+<div class="actions">
+  <%= link_to "Delete", review_path(@review), method: :delete, data: {confirm: "Are you sure?"} %>
+  <%= link_to "Edit", edit_review_path(@review) %>
+</div>
