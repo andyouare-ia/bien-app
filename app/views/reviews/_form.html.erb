@@ -1,5 +1,7 @@
 <%= form_for @review do |f| %>
 
+  <%= render "shared/errors", object: @review %>
+
   <p>
     <%= f.label :title  %>
     <%= f.text_field :title %>

@@ -2,12 +2,16 @@ class ReviewsController < ApplicationController
 
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
+  #READ
+
   def index
     @reviews = Review.all
   end
 
   def show
   end
+
+  #CREATE
 
   def new
     @review = Review.new
@@ -22,6 +26,8 @@ class ReviewsController < ApplicationController
     end
   end
 
+  #UPDATE
+
   def edit
   end
 
@@ -32,6 +38,8 @@ class ReviewsController < ApplicationController
       render :edit
     end
   end
+
+  #DELETE
 
   def destroy
     @review.destroy
