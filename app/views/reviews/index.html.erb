@@ -2,7 +2,7 @@
 
 <nav class="filters">
 
-  <%= link_to "All Restaurants", reviews_path %>
+  <%= active_link_to "All Restaurants", reviews_path, active: { price: nil, cuisine: nil, location: nil } %>
 
   <form action="/">
     <input type="text" name="location"
@@ -12,14 +12,14 @@
   </form>
 
   <div>
-    <%= nav_link_to "$", reviews_path(price: 1, cuisine: @cuisine, location: @location) %>
-    <%= nav_link_to "$$", reviews_path(price: 2, cuisine: @cuisine, location: @location) %>
-    <%= nav_link_to "$$$", reviews_path(price: 3, cuisine: @cuisine, location: @location) %>
+    <%= active_link_to "$", reviews_path(price: 1, cuisine: @cuisine, location: @location), active: { price: 1 } %>
+    <%= active_link_to "$$", reviews_path(price: 2, cuisine: @cuisine, location: @location), active: { price: 2 } %>
+    <%= active_link_to "$$$", reviews_path(price: 3, cuisine: @cuisine, location: @location), active: { price: 3 } %>
   </div>
 
   <div>
     <% @cuisines.each do |cuisine| %>
-      <%= nav_link_to cuisine, reviews_path(cuisine: cuisine, price: @price, location: @location) %>
+      <%= active_link_to cuisine, reviews_path(cuisine: cuisine, price: @price, location: @location), active: { cuisine: cuisine } %>
     <% end %>
   </div>
 
