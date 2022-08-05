@@ -1,43 +1,16 @@
-<%= form_for @review do |f| %>
+<%= simple_form_for @review do |f| %>
 
   <%= render "shared/errors", object: @review %>
 
-  <p>
-    <%= f.label :title  %>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :restaurant  %>
-    <%= f.text_field :restaurant %>
-  </p>
-  <p>
-    <%= f.label :address  %>
-    <%= f.text_field :address %>
-  </p>
-  <p>
-    <%= f.label :body  %>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.label :cuisine  %>
-    <%= f.text_field :cuisine %>
-  </p>
-  <p>
-    <%= f.label :price  %>
-    <%= f.number_field :price %>
-  </p>
-   <p>
-    <%= f.label :score  %>
-    <%= f.number_field :score %>
-  </p>
-
-  <p>
-    <%= f.label :ambiance  %>
-    <%= f.text_field :ambiance %>
-  </p>
-
-  <p>
-    <%= f.submit "Save", class: "orange-button" %>
-  </p>
+  <%= f.input :title %>
+  <%= f.input :restaurant %>
+  <%= f.input :address %>
+  <%= f.input :body %>
+  <%= f.input :cuisine %>
+  <%= f.input :price %>
+  <%= f.input :score %>
+  <%= f.input :ambiance %>
+  <br>
+  <%= f.button :submit, class: "orange-button" %>
 
 <% end %>

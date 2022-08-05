@@ -30,6 +30,8 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 # Adds in geocoding
 gem 'geocoder'
+# To simplify forms
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
