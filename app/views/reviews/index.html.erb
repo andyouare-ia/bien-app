@@ -3,13 +3,25 @@
 <nav class="filters">
 
   <%= link_to "All Restaurants", reviews_path %>
-  <%= nav_link_to "$", reviews_path(price: 1, cuisine: @cuisine) %>
-  <%= nav_link_to "$$", reviews_path(price: 2, cuisine: @cuisine) %>
-  <%= nav_link_to "$$$", reviews_path(price: 3, cuisine: @cuisine) %>
 
-  <% @cuisines.each do |cuisine| %>
-    <%= nav_link_to cuisine, reviews_path(cuisine: cuisine, price: @price) %>
-  <% end %>
+  <form action="/">
+    <input type="text" name="location"
+           placeholder="Search location..." value="<%= @location %>">
+    <input type="hidden" name="price" value="<%= @price %>">
+    <input type="hidden" name="cuisine" value="<%= @cuisine %>">
+  </form>
+
+  <div>
+    <%= nav_link_to "$", reviews_path(price: 1, cuisine: @cuisine, location: @location) %>
+    <%= nav_link_to "$$", reviews_path(price: 2, cuisine: @cuisine, location: @location) %>
+    <%= nav_link_to "$$$", reviews_path(price: 3, cuisine: @cuisine, location: @location) %>
+  </div>
+
+  <div>
+    <% @cuisines.each do |cuisine| %>
+      <%= nav_link_to cuisine, reviews_path(cuisine: cuisine, price: @price, location: @location) %>
+    <% end %>
+  </div>
 
 </nav>
 

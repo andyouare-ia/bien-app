@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
   def index
     @price = params[:price]
     @cuisine = params[:cuisine]
+    @location = params[:location]
 
     @reviews = Review.all
     @cuisines = Review.distinct.pluck(:cuisine)
@@ -17,6 +18,10 @@ class ReviewsController < ApplicationController
 
     if @cuisine.present?
       @reviews = @reviews.cuisine(@cuisine)
+    end
+
+    if @location.present?
+      @reviews = @reviews.near(@location)
     end
 
   end
@@ -67,6 +72,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:title, :restaurant, :body, :cuisine, :price, :score, :ambiance)
+    params.require(:review).permit(:title, :restaurant, :body, :cuisine, :price, :score, :ambiance, :address)
   end
 end
