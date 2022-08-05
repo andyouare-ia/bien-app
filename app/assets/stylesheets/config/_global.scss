@@ -64,7 +64,7 @@ textarea {
 
 nav.filters {
   margin: 0 0 20px 0;
-  padding: 0 0 10px 0;
+  padding: 0 0 15px 0;
   font-size: 14px;
   border-bottom: 2px solid $lightyellow;
 
@@ -72,9 +72,17 @@ nav.filters {
   align-items: center;
 
   a {
-    margin: 0 5px 0 0;
+    margin: 0 15px 0 0;
     text-decoration: none;
     color: $black;
+  }
+
+  a.active {
+    color: #3BC8AA;
+  }
+
+  a:hover {
+    color: #3BC8AA;
   }
 
   div, form {

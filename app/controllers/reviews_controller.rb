@@ -5,7 +5,20 @@ class ReviewsController < ApplicationController
   #READ
 
   def index
+    @price = params[:price]
+    @cuisine = params[:cuisine]
+
     @reviews = Review.all
+    @cuisines = Review.distinct.pluck(:cuisine)
+
+    if @price.present?
+      @reviews = @reviews.price(@price)
+    end
+
+    if @cuisine.present?
+      @reviews = @reviews.cuisine(@cuisine)
+    end
+
   end
 
   def show
@@ -20,7 +33,7 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     if @review.save
-      redirect_to reviews_path
+      redirect_to root_path
     else
       render :new
     end
@@ -44,7 +57,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
 
-    redirect_to reviews_path
+    redirect_to root_path
   end
 
   private
@@ -54,6 +67,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:title, :restaurant, :body, :score, :ambiance)
+    params.require(:review).permit(:title, :restaurant, :body, :cuisine, :price, :score, :ambiance)
   end
 end

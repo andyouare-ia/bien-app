@@ -7,6 +7,9 @@ class Review < ApplicationRecord
                                     less_than_or_equal_to: 10 }
   validates :restaurant, presence: true
 
+  scope :price, ->(amount) { where('price = ?', amount) }
+  scope :cuisine, ->(cuisine) { where('lower(cuisine) =?', cuisine.downcase) }
+
   def to_param
     "#{id}-#{title.parameterize}"
   end

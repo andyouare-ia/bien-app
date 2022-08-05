@@ -1,5 +1,18 @@
 <% content_for :page_title, "Popular Restaurants" %>
 
+<nav class="filters">
+
+  <%= link_to "All Restaurants", reviews_path %>
+  <%= nav_link_to "$", reviews_path(price: 1, cuisine: @cuisine) %>
+  <%= nav_link_to "$$", reviews_path(price: 2, cuisine: @cuisine) %>
+  <%= nav_link_to "$$$", reviews_path(price: 3, cuisine: @cuisine) %>
+
+  <% @cuisines.each do |cuisine| %>
+    <%= nav_link_to cuisine, reviews_path(cuisine: cuisine, price: @price) %>
+  <% end %>
+
+</nav>
+
 <% @reviews.each do |review| %>
   <p><%= link_to review.title, review %></p>
 <% end %>
