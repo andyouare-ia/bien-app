@@ -1,5 +1,9 @@
 class Review < ApplicationRecord
 
+  # associations
+  has_many :comments
+
+  # validations
   geocoded_by :address
   after_validation :geocode
 
@@ -14,9 +18,11 @@ class Review < ApplicationRecord
   validates :restaurant, presence: true
   validates :address, presence: true
 
+  # filters
   scope :price, ->(amount) { where('price = ?', amount) }
   scope :cuisine, ->(cuisine) { where('lower(cuisine) =?', cuisine.downcase) }
 
+  # methods
   def to_param
     "#{id}-#{title.parameterize}"
   end

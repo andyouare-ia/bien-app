@@ -26,5 +26,10 @@
 </nav>
 
 <% @reviews.each do |review| %>
-  <p><%= link_to review.title, review %></p>
+  <%= link_to review do %>
+    <h2><%= review.title %></h2>
+    <p>
+      <%= review.cuisine %> - <%= pluralize(review.comments.count, "comment") %>
+    </p>
+  <% end %>
 <% end %>
