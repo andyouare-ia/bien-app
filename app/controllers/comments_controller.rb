@@ -1,6 +1,6 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
-
-
   def create
     @review = Review.find(params[:review_id])
     @comment = @review.comments.new(comment_params)

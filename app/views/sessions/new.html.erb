@@ -1,7 +1,10 @@
 <h2>Log in</h2>
 
-<div class="form">
+<%- simple_form_for :session, url: session_path do |f| %>
 
-  <%= render 'form' %>
+<%= f.input :username %>
+<%= f.input :password %>
 
-</div>
+<%= f.button :submit, "Log in" %>
+
+<% end %>

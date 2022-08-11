@@ -1,6 +1,7 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
-  root "reviews#index"
+Rails.application.routes.draw do
+  root 'reviews#index'
 
   resources :reviews do
     resources :comments
@@ -8,4 +9,5 @@ Rails.application.routes.draw do
 
   resources :users
 
+  resources :sessions
 end

@@ -1,5 +1,6 @@
-class Review < ApplicationRecord
+# frozen_string_literal: true
 
+class Review < ApplicationRecord
   # associations
   has_many :comments
 
@@ -26,5 +27,4 @@ class Review < ApplicationRecord
   def to_param
     "#{id}-#{title.parameterize}"
   end
-
 end

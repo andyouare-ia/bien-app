@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class ReviewsController < ApplicationController
+  before_action :set_review, only: %i[show edit update destroy]
 
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
-
-  #READ
+  # READ
 
   def index
     @price = params[:price]
@@ -12,24 +13,16 @@ class ReviewsController < ApplicationController
     @reviews = Review.all
     @cuisines = Review.distinct.pluck(:cuisine)
 
-    if @price.present?
-      @reviews = @reviews.price(@price)
-    end
+    @reviews = @reviews.price(@price) if @price.present?
 
-    if @cuisine.present?
-      @reviews = @reviews.cuisine(@cuisine)
-    end
+    @reviews = @reviews.cuisine(@cuisine) if @cuisine.present?
 
-    if @location.present?
-      @reviews = @reviews.near(@location)
-    end
-
+    @reviews = @reviews.near(@location) if @location.present?
   end
 
-  def show
-  end
+  def show; end
 
-  #CREATE
+  # CREATE
 
   def new
     @review = Review.new
@@ -44,10 +37,9 @@ class ReviewsController < ApplicationController
     end
   end
 
-  #UPDATE
+  # UPDATE
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @review.update(review_params)
@@ -57,7 +49,7 @@ class ReviewsController < ApplicationController
     end
   end
 
-  #DELETE
+  # DELETE
 
   def destroy
     @review.destroy
