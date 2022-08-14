@@ -40,15 +40,24 @@
 <h3>Comments</h3>
 
 <% @review.comments.order("created_at desc").each do |comment| %>
+  <% if comment.user.present? %>
+    <%= comment.user.username %>:
+  <% else %>
+    Anonymous:
+  <% end %>
   <div class="comment">
     <%= comment.body %>
     <p class="posted">Posted <%= time_ago_in_words(comment.created_at) %> ago</p>
   </div>
 <% end %>
 
-<h3>Add a Comment</h3>
+<% if logged_in? %>
 
-<%= simple_form_for [@review, Comment.new] do |f| %>
-  <%= f.input :body %>
-  <%= f.button :submit, "Submit", class: "orange-button" %>
+  <h3>Add a Comment</h3>
+
+  <%= simple_form_for [@review, Comment.new] do |f| %>
+    <%= f.input :body %>
+    <%= f.button :submit, "Submit", class: "orange-button" %>
+  <% end %>
+
 <% end %>

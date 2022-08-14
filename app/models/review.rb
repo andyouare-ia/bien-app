@@ -3,6 +3,7 @@
 class Review < ApplicationRecord
   # associations
   has_many :comments
+  belongs_to :user
 
   # validations
   geocoded_by :address

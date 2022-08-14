@@ -3,6 +3,7 @@
 class Comment < ApplicationRecord
   #  associations
   belongs_to :review
+  belongs_to :user
 
   #  validations
   validates :body, presence: true
