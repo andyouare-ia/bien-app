@@ -9,6 +9,8 @@ class Review < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
+  PRICE = [1, 2, 3]
+
   validates :title, presence: true
   validates :body, length: { minimum: 10 }
   validates :price, numericality: { only_integer: true,

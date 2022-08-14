@@ -18,7 +18,7 @@
 
 <% if @review.price.present? %>
   <div class="price">
-    Price: <%= @review.price %>
+    Price: <%= price_converter(@review.price) %>
   </div>
 <% end %>
 
@@ -40,14 +40,13 @@
 <h3>Comments</h3>
 
 <% @review.comments.order("created_at desc").each do |comment| %>
-  <% if comment.user.present? %>
-    <%= comment.user.username %>:
-  <% else %>
-    Anonymous:
-  <% end %>
   <div class="comment">
+    <% if comment.user.present? %>
+      <p class="posted">Posted by <%= link_to add_handle(comment.user.username), comment.user %> <%= time_ago_in_words(comment.created_at) %> ago</p>
+    <% else %>
+      <p class="posted">Posted by Anonymous <%= time_ago_in_words(comment.created_at) %> ago</p>
+    <% end %>
     <%= comment.body %>
-    <p class="posted">Posted <%= time_ago_in_words(comment.created_at) %> ago</p>
   </div>
 <% end %>
 

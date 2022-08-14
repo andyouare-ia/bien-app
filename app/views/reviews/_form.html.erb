@@ -7,8 +7,8 @@
   <%= f.input :address %>
   <%= f.input :body %>
   <%= f.input :cuisine %>
-  <%= f.input :price %>
-  <%= f.input :score %>
+  <%= f.input :price, collection: Review::PRICE, prompt: "Select a price range" %>
+  <%= f.input :score, collection: 1..10, prompt: "Score this restaurant" %>
   <%= f.input :ambiance %>
   <br>
   <%= f.button :submit, class: "orange-button" %>

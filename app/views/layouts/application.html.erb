@@ -25,7 +25,7 @@
       </nav>
       <nav>
         <% if logged_in? %>
-          <%= @current_user.username %>
+          <%= link_to add_handle(@current_user.username), @current_user %>
           <%= link_to "Add a review", new_review_path, class: "orange-button" %>
           <%= link_to "Log out", session_path, method: :delete %>
         <% else %>
