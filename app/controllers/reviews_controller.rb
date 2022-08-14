@@ -41,22 +41,32 @@ class ReviewsController < ApplicationController
 
   # UPDATE
 
-  def edit; end
+  def edit
+    if @review.user != @current_user
+      redirect_to :root
+    end
+  end
 
   def update
-    if @review.update(review_params)
-      redirect_to @review
+    if @review.user != @current_user
+      redirect_to :root
     else
-      render :edit
+      if @review.update(review_params)
+        redirect_to @review
+      else
+        render :edit
+      end
     end
   end
 
   # DELETE
 
   def destroy
-    @review.destroy
+    if @review.user == @current_user
+      @review.destroy
+    end
 
-    redirect_to root_path
+    redirect_to :root
   end
 
   private
