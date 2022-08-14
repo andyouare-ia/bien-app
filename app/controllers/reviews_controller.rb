@@ -2,6 +2,7 @@
 
 class ReviewsController < ApplicationController
   before_action :set_review, only: %i[show edit update destroy]
+  before_action :check_login, except: %i[index show]
 
   # READ
 
