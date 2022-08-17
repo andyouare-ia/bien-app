@@ -18,4 +18,10 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :logged_in?
+
+  def owner?(user)
+    user == find_current_user
+  end
+
+  helper_method :owner?
 end

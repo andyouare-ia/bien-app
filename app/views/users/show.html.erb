@@ -1,4 +1,15 @@
 <h1><%= @user.username %></h1>
+<p>Member of <em>bien</em> since <%= @user.created_at.strftime("%B %d, %Y")  %></p>
 
 <h2>Reviews: <%= @user.reviews.count %></h2>
 <h2>Comments: <%= @user.comments.count %></h2>
+<% if owner?(@user) %>
+  <h2>Bookmarks: <%= @user.bookmarks.count %></h2>
+  <ul>
+    <% @user.bookmarks.each do |bookmark| %>
+      <li>
+        <%= link_to "#{bookmark.review.restaurant} - #{bookmark.review.title}", bookmark.review %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

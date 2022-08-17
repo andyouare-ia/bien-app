@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :reviews do
     resources :comments
+    resource :bookmark, only: %i[create destroy]
   end
 
   resources :users
