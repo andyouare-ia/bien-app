@@ -1,8 +1,15 @@
 <% content_for :page_title, @review.title %>
 
-<h1><%= @review.title %></h1>
+<div class="title">
+  <h1>
+    <%= @review.title %>
+  </h1>
+  <% if logged_in? %>
+    <%= link_to boormark_or_unbookmark(@review), review_bookmark_path(@review), method: bookmark_http_method(@review) %>
+  <% end %>
+</div>
 
-<div class="user">
+<div class="author">
   Posted by
   <% if @review.user.present? %>
     <%= link_to add_handle(@review.user.username), @review.user %>
@@ -14,9 +21,6 @@
 
 <div class="bookmark">
   Bookmarked by <%= pluralize(@review.bookmarks.count, 'user') %>
-  <% if logged_in? %>
-    <%= link_to boormark_or_unbookmark(@review), review_bookmark_path(@review), method: bookmark_http_method(@review) %>
-  <% end %>
 </div>
 
 <h2><%= @review.restaurant %></h2>

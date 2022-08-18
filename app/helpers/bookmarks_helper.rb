@@ -1,9 +1,9 @@
 module BookmarksHelper
   def boormark_or_unbookmark(review)
     if Bookmark.find_by(user: @current_user, review: review)
-      "Unbookmark"
+      image_tag "bookmark-black.svg", style: "height:25px;width:auto;"
     else
-      "Bookmark"
+      image_tag "bookmark-white.svg", style: "height:25px;width:auto;"
     end
   end
 

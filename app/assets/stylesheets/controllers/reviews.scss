@@ -1,3 +1,9 @@
 // Place all the styles related to the reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+div.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
