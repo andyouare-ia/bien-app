@@ -44,6 +44,8 @@ class ReviewsController < ApplicationController
   def edit
     if @review.user != @current_user
       redirect_to :root
+    elsif @review.created_at < 1.hour.ago
+      redirect_to @review
     end
   end
 
