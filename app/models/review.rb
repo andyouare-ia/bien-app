@@ -6,9 +6,13 @@ class Review < ApplicationRecord
   has_many :bookmarks
   belongs_to :user
 
-  # validations
   geocoded_by :address
   after_validation :geocode
+
+  # add the photo uploader
+  mount_uploader :photo, PhotoUploader
+
+  # validations
 
   PRICE = [1, 2, 3]
 

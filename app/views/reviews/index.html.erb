@@ -28,6 +28,7 @@
 <% @reviews.each do |review| %>
   <%= link_to review do %>
     <h2><%= review.title %></h2>
+    <%= image_tag review.photo.thumb.url if review.photo.present?%>
     <p>
       <%= review.cuisine %> - <%= pluralize(review.comments.count, "comment") %>
     </p>

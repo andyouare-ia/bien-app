@@ -44,7 +44,7 @@ class ReviewsController < ApplicationController
   def edit
     if @review.user != @current_user
       redirect_to :root
-    elsif @review.created_at < 1.hour.ago
+    elsif @review.created_at < 500.day.ago
       redirect_to @review
     end
   end
@@ -78,6 +78,7 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:title, :restaurant, :body, :cuisine, :price, :score, :ambiance, :address)
+    params.require(:review).permit(:title, :restaurant, :body, :cuisine, :price,
+      :score, :ambiance, :address, :photo)
   end
 end
