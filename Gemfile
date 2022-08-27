@@ -51,7 +51,11 @@ gem 'profanity_filter'
 gem 'rubocop', '~> 1.34', require: false
 # file uploading
 gem 'carrierwave', '~> 2.0'
-# gem 'mini_magic'
+# to support amazon s3 and carrierwave
+gem 'carrierwave-aws'
+gem 'mini_magick'
+gem 'aws-sdk-rails'
+gem 'figaro'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
